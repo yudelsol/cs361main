@@ -64,8 +64,19 @@ while(choice != "4"):
                 date = ""
                 break
             print("\n")
-            amount = input("Enter purchase amount: ")
-            if (amount == "0"):
+            
+            while True:
+                try:
+                    amount_str = input("Enter purchase amount: ")
+                    amount = float(amount_str)
+                    if amount >= 0:
+                        break
+                    else:
+                        print("Amount cannot be negative.")
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
+
+            if (amount == 0):
                 amount = ""
                 break
             print("\n")
@@ -75,7 +86,8 @@ while(choice != "4"):
                 print("please enter either Yes or No to confirming your entry")
                 confirm = input("(WARNING confirming the entry will add it to your information and can not be undone!)\nConfirm entry (Yes/No): ")
             if(confirm == "Yes" or confirm == "yes" or confirm == "Y" or confirm == "y"):
-                purchasefile.write(name + ", " + date + ", " + amount)
+                purchasefile.write(name + ", " + date + ", " + str(amount))
+                purchasefile.flush()
 
         elif(choice == "2"):
             if(platform.system() == "Windows"):
@@ -110,8 +122,19 @@ while(choice != "4"):
                     date = ""
                     break
             print("\n")
-            amount = input("Enter bill amount: ")
-            if(amount == "0"):
+            
+            while True:
+                try:
+                    amount_str = input("Enter bill amount: ")
+                    amount = float(amount_str)
+                    if amount >= 0:
+                        break
+                    else:
+                        print("Amount cannot be negative.")
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
+
+            if(amount == 0):
                 amount = ""
                 break
             print("\n")
@@ -121,7 +144,8 @@ while(choice != "4"):
                 print("please enter either Yes or No to confirming your entry")
                 confirm = input("(WARNING confirming the entry will add it to your information and can not be undone!)\nConfirm entry (Yes/No): ")
             if(confirm == "Yes" or confirm == "yes" or confirm == "Y" or confirm == "y"):
-                billfile.write(name + ", " + date + ", " + amount)
+                billfile.write(name + ", " + date + ", " + str(amount))
+                billfile.flush()
 
         elif(choice == "3"):
             if(platform.system() == "Windows"):
@@ -156,8 +180,21 @@ while(choice != "4"):
                 date = ""
                 break
             print("\n")
-            amount = input("Enter income amount: ")
-            if (amount == "0"):
+
+
+            while True:
+                try:
+                    amount_str = input("Enter income amount: ")
+                    amount = float(amount_str)
+                    if amount >= 0:
+                        break
+                    else:
+                        print("Amount cannot be negative.")
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
+
+
+            if (amount == 0):
                 amount = ""
                 break
             print("\n")
@@ -167,6 +204,7 @@ while(choice != "4"):
                 print("\nPlease enter either Yes or No to confirm your entry")
                 confirm = input("(WARNING confirming the entry will add it to your information and can not be undone!)\nConfirm entry (Yes/No): ")
             if(confirm == "Yes" or confirm == "yes" or confirm == "Y" or confirm == "y"):
-                incomefile.write(name + ", " + date + ", " + amount)
+                incomefile.write(name + ", " + date + ", " + str(amount))
+                incomefile.flush()
         elif(choice == "4"):
             end = True
